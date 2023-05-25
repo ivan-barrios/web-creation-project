@@ -8,6 +8,7 @@ const Form = () => {
   const [layoutForm, setLayoutForm] = useState(true);
   const [textForm, setTextForm] = useState(false);
   const [colorForm, setColorForm] = useState(false);
+  const [selectedLayout, setSelectedLayout] = useState("None");
 
   const handleLayoutForm = () => {
     setLayoutForm(true);
@@ -26,7 +27,7 @@ const Form = () => {
   };
 
   return (
-    <section
+    <form
       id="create"
       className="py-6 sm:py-16 xl:px-0 sm:px-16 px-6 text-white"
     >
@@ -64,11 +65,16 @@ const Form = () => {
             Color Form
           </li>
         </ul>
-        {layoutForm && <LayoutForm />}
+        {layoutForm && (
+          <LayoutForm
+            selectedLayout={selectedLayout}
+            setSelectedLayout={setSelectedLayout}
+          />
+        )}
         {textForm && <TextForm />}
         {colorForm && <ColorForm />}
       </div>
-    </section>
+    </form>
   );
 };
 export default Form;
