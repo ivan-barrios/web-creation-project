@@ -31,6 +31,7 @@
   background-clip: text;
   /* text-fill-color: transparent; */
 }
+
 .bg-discount-gradient {
   background: linear-gradient(125.17deg, #272727 0%, #11101d 100%);
 }
@@ -40,16 +41,29 @@
     #ffffff -278.56%,
     #6d6d6d -78.47%,
     #11101d 91.61%
-  );
-}
+    );
+  }
 .footer-gradient {
   position: absolute;
   width: 500px;
   height: 100px;
   left: 37%;
   bottom: 0;
-
+  
   background: #65c4fa;
   filter: blur(150px);
 }
 /* -----------------------------Gradients--------------------------- */
+
+
+.button-style {
+  background: radial-gradient(
+    64.18% 64.18% at 71.16% 35.69%,
+    #def9fa 0.89%,
+    #bef3f5 17.23%,
+    #9dedf0 42.04%,
+    #7de7eb 55.12%,
+    #5ce1e6 71.54%,
+    #33bbcf 100%
+  );
+}

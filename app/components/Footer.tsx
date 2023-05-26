@@ -21,12 +21,10 @@ const Footer = () => (
         </h4>
         <button
           type="button"
-          className="flex items-center h-fit py-4 px-6 bg-[#25618b] rounded-[32px] gap-[12px]"
+          className="flex items-center h-fit py-4 px-6 button-style rounded-[32px] gap-[12px] text-black"
         >
-          <AiFillDollarCircle className="w-[24px] h-[24] cursor-pointer text-white" />
-          <span className="font-normal text-[16px] text-white">
-            Donate now!
-          </span>
+          <AiFillDollarCircle className="w-[24px] h-[24px] cursor-pointer" />
+          <span className="font-extrabold text-[16px]">Donate now!</span>
         </button>
       </div>
       <div className="flex flex-col ">

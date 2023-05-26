@@ -7,11 +7,11 @@ const TextForm = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ delay: 0.1 }}
-      className="w-full px-12"
+      className="w-full px-12 py-8 border border-inactiveText rounded-lg"
     >
       <h2 className="text-3xl mb-8 md:mb-16">Text Form</h2>
       <div className="flex flex-wrap justify-center gap-8">
-        <div className="flex flex-col w-[300px] sm:w-[400px] gap-4">
+        <div className="flex flex-col min-w-[200px] sm:w-[400px] gap-4">
           <label htmlFor="Logo" className="text-2xl">
             Logo
           </label>
@@ -26,6 +26,11 @@ const TextForm = () => {
           inputObjective="Hero Description"
           placeholder="Your hero description"
         />
+      </div>
+      <div className="w-full flex justify-center mt-16">
+        <button className="button-style text-black font-extrabold text-xl px-8 py-3 rounded-lg">
+          Save Changes
+        </button>
       </div>
     </motion.div>
   );
