@@ -1,7 +1,20 @@
 import { motion } from "framer-motion";
 import TextInput from "./TextInput";
 
-const TextForm = () => {
+const TextForm = ({
+  setLogo,
+  setHeroTitle,
+  setHeroSubtitle,
+  setHeroDescription,
+}) => {
+  const handleSave = () => {
+    const logoInput = document.getElementById("Logo");
+    setLogo(logoInput.files[0]); //Ts error
+    setHeroTitle(document.getElementById("Hero Title").value);
+    setHeroSubtitle(document.getElementById("Hero Subtitle").value);
+    setHeroDescription(document.getElementById("Hero Description").value);
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -15,7 +28,7 @@ const TextForm = () => {
           <label htmlFor="Logo" className="text-2xl">
             Logo
           </label>
-          <input className={fileInputStyle} type="file" />
+          <input id="Logo" className={fileInputStyle} type="file" />
         </div>
         <TextInput inputObjective="Hero Title" placeholder="Your hero title" />
         <TextInput
@@ -28,7 +41,13 @@ const TextForm = () => {
         />
       </div>
       <div className="w-full flex justify-center mt-16">
-        <button className="button-style text-black font-extrabold text-xl px-8 py-3 rounded-lg">
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            handleSave();
+          }}
+          className="button-style text-black font-extrabold text-xl px-8 py-3 rounded-lg"
+        >
           Save Changes
         </button>
       </div>

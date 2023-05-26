@@ -1,7 +1,21 @@
 import { motion } from "framer-motion";
 import TextInput from "./TextInput";
 
-const ColorForm = () => {
+const ColorForm = ({
+  setBackGroundColor,
+  setPrimaryColor,
+  setSecondaryColor,
+  setTextHighlightColor,
+}) => {
+  const handleSave = () => {
+    setBackGroundColor(document.getElementById("Background Color").value);
+    setPrimaryColor(document.getElementById("Primary color").value);
+    setSecondaryColor(document.getElementById("Secondary color").value);
+    setTextHighlightColor(
+      document.getElementById("Text highlight color").value
+    );
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -16,6 +30,10 @@ const ColorForm = () => {
           placeholder="rgb(43, 56, 98) || #2b3862"
         />
         <TextInput
+          inputObjective="Primary color"
+          placeholder="rgb(43, 56, 98) || #2b3862"
+        />
+        <TextInput
           inputObjective="Secondary color"
           placeholder="rgb(43, 56, 98) || #2b3862"
         />
@@ -25,7 +43,13 @@ const ColorForm = () => {
         />
       </div>
       <div className="w-full flex justify-center mt-16">
-        <button className="button-style text-black font-extrabold text-xl px-8 py-3 rounded-lg">
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            handleSave();
+          }}
+          className="button-style text-black font-extrabold text-xl px-8 py-3 rounded-lg"
+        >
           Save Changes
         </button>
       </div>

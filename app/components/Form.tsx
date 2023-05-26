@@ -12,6 +12,14 @@ const Form = () => {
 
   //Form submit managers
   const [selectedLayout, setSelectedLayout] = useState("none");
+  const [logo, setLogo] = useState();
+  const [heroTitle, setHeroTitle] = useState("none");
+  const [heroSubtitle, setHeroSubtitle] = useState("none");
+  const [heroDescription, setHeroDescription] = useState("none");
+  const [backGroundColor, setBackGroundColor] = useState("none");
+  const [primaryColor, setPrimaryColor] = useState("none");
+  const [secondaryColor, setSecondaryColor] = useState("none");
+  const [textHighlightColor, setTextHighlightColor] = useState("none");
 
   // --------------Display managers--------------
   const handleLayoutForm = () => {
@@ -30,6 +38,19 @@ const Form = () => {
     setColorForm(true);
   };
   // --------------Display managers--------------
+
+  const handleGenerate = () => {
+    //Here I set the data to the file manager
+    console.log(selectedLayout);
+    console.log(logo);
+    console.log(heroTitle);
+    console.log(heroSubtitle);
+    console.log(heroDescription);
+    console.log(backGroundColor);
+    console.log(primaryColor);
+    console.log(secondaryColor);
+    console.log(textHighlightColor);
+  };
 
   return (
     <form
@@ -77,12 +98,32 @@ const Form = () => {
               setSelectedLayout={setSelectedLayout}
             />
           )}
-          {textForm && <TextForm />}
-          {colorForm && <ColorForm />}
+          {textForm && (
+            <TextForm
+              setLogo={setLogo}
+              setHeroTitle={setHeroTitle}
+              setHeroSubtitle={setHeroSubtitle}
+              setHeroDescription={setHeroDescription}
+            />
+          )}
+          {colorForm && (
+            <ColorForm
+              setBackGroundColor={setBackGroundColor}
+              setPrimaryColor={setPrimaryColor}
+              setSecondaryColor={setSecondaryColor}
+              setTextHighlightColor={setTextHighlightColor}
+            />
+          )}
         </div>
       </div>
       <div className="w-full flex justify-center mt-16 sm:mt-24">
-        <button className="button-style text-black font-extrabold text-xl px-8 py-3 rounded-lg">
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            handleGenerate();
+          }}
+          className="button-style text-black font-extrabold text-xl px-8 py-3 rounded-lg"
+        >
           Generate web code!
         </button>
       </div>

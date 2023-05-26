@@ -22,6 +22,10 @@ const layouts = [
 ];
 
 const LayoutForm = ({ selectedLayout, setSelectedLayout }) => {
+  const handleSave = () => {
+    setSelectedLayout(selectedLayout);
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -46,7 +50,13 @@ const LayoutForm = ({ selectedLayout, setSelectedLayout }) => {
         ))}
       </div>
       <div className="w-full flex justify-center mt-16">
-        <button className="button-style text-black font-extrabold text-xl px-8 py-3 rounded-lg">
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            handleSave();
+          }}
+          className="button-style text-black font-extrabold text-xl px-8 py-3 rounded-lg"
+        >
           Save Changes
         </button>
       </div>
