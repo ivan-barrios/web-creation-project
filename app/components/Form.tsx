@@ -1,65 +1,85 @@
-import Image from "next/image";
-import layout1 from "/public/layout1.png";
-
-const layouts = [
-  {
-    id: 1,
-    imgSrc: layout1,
-  },
-  {
-    id: 2,
-    imgSrc: layout1,
-  },
-  {
-    id: 3,
-    imgSrc: layout1,
-  },
-];
+"use client";
+import { useState } from "react";
+import LayoutForm from "./LayoutForm";
+import TextForm from "./TextForm";
+import ColorForm from "./ColorForm";
 
 const Form = () => {
+  //Display managers
+  const [layoutForm, setLayoutForm] = useState(true);
+  const [textForm, setTextForm] = useState(false);
+  const [colorForm, setColorForm] = useState(false);
+
+  //Form submit managers
+  const [selectedLayout, setSelectedLayout] = useState("none");
+
+  // --------------Display managers--------------
+  const handleLayoutForm = () => {
+    setLayoutForm(true);
+    setTextForm(false);
+    setColorForm(false);
+  };
+  const handleTextForm = () => {
+    setLayoutForm(false);
+    setTextForm(true);
+    setColorForm(false);
+  };
+  const handleColorForm = () => {
+    setLayoutForm(false);
+    setTextForm(false);
+    setColorForm(true);
+  };
+  // --------------Display managers--------------
+
   return (
-    <section className="w-full text-white">
-      <form
-        className={`flex-1 flex flex-col md:flex-row xl:px-0 sm:px-16 px-6 py-8`}
-      >
-        {/* Text and layout form */}
-        <div className="flex flex-col w-1/2">
-          <h2>Layout</h2>
-          <div className="flex w-full px-4 py-2">
-            {layouts.map((layout) => (
-              <div key={layout.id} className="w-full">
-                <Image
-                  src={layout.imgSrc}
-                  alt="Layout"
-                  width={400}
-                  height={400}
-                />
-              </div>
-            ))}
-          </div>
-          <div className="flex flex-col gap-12 py-4">
-            <div>
-              <label>Logo: </label>
-              <input type="file"></input>
-            </div>
-            <div>
-              <label>Navlinks: </label>
-              <input type="text"></input>
-            </div>
-            <div>
-              <label>Hero Title</label>
-              <input type="text"></input>
-            </div>
-            <div>
-              <label>Hero paragraph</label>
-              <input type="text"></input>
-            </div>
-          </div>
-        </div>
-        {/* Color form */}
-        <div>Color</div>
-      </form>
-    </section>
+    <form
+      id="create"
+      className="py-6 sm:py-16 xl:px-0 sm:px-16 px-6 text-white"
+    >
+      <h1 className="text-4xl">Web Form</h1>
+      <div className="w-full mt-10 flex flex-col md:flex-row gap-16">
+        <ul className="md:w-42 flex flex-col mt-16">
+          <li
+            onClick={handleLayoutForm}
+            className={`${
+              layoutForm
+                ? "border-l-activeText text-activeText"
+                : "border-l-inactiveText text-inactiveText"
+            } border-l-2 bg-transparent hover:bg-[#112240] py-3 text-lg cursor-pointer duration-300 px-8 font-medium`}
+          >
+            Layout Form
+          </li>
+          <li
+            onClick={handleTextForm}
+            className={`${
+              textForm
+                ? "border-l-activeText text-activeText"
+                : "border-l-inactiveText text-inactiveText"
+            } border-l-2 bg-transparent hover:bg-[#112240] py-3 text-lg cursor-pointer duration-300 px-8 font-medium`}
+          >
+            Text Form
+          </li>
+          <li
+            onClick={handleColorForm}
+            className={`${
+              colorForm
+                ? "border-l-activeText text-activeText"
+                : "border-l-inactiveText text-inactiveText"
+            } border-l-2 bg-transparent hover:bg-[#112240] py-3 text-lg cursor-pointer duration-300 px-8 font-medium`}
+          >
+            Color Form
+          </li>
+        </ul>
+        {layoutForm && (
+          <LayoutForm
+            selectedLayout={selectedLayout}
+            setSelectedLayout={setSelectedLayout}
+          />
+        )}
+        {textForm && <TextForm />}
+        {colorForm && <ColorForm />}
+      </div>
+    </form>
   );
 };
 export default Form;
