@@ -40,8 +40,8 @@ const LayoutForm = ({ selectedLayout, setSelectedLayout }) => {
             src={layout.imgSrc}
             key={layout.id}
             alt="Layout"
-            width={200}
-            height={200}
+            width={300}
+            height={300}
             onClick={() => setSelectedLayout(layout.path)}
             className={`cursor-pointer rounded-lg ${
               selectedLayout == layout.path ? "ring-4 ring-activeText" : ""

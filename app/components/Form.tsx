@@ -16,7 +16,7 @@ const Form = () => {
   const [heroTitle, setHeroTitle] = useState("none");
   const [heroSubtitle, setHeroSubtitle] = useState("none");
   const [heroDescription, setHeroDescription] = useState("none");
-  const [backGroundColor, setBackGroundColor] = useState("none");
+  const [backgroundColor, setBackgroundColor] = useState("none");
   const [primaryColor, setPrimaryColor] = useState("none");
   const [secondaryColor, setSecondaryColor] = useState("none");
   const [textHighlightColor, setTextHighlightColor] = useState("none");
@@ -46,7 +46,7 @@ const Form = () => {
     console.log(heroTitle);
     console.log(heroSubtitle);
     console.log(heroDescription);
-    console.log(backGroundColor);
+    console.log(backgroundColor);
     console.log(primaryColor);
     console.log(secondaryColor);
     console.log(textHighlightColor);
@@ -108,7 +108,7 @@ const Form = () => {
           )}
           {colorForm && (
             <ColorForm
-              setBackGroundColor={setBackGroundColor}
+              setBackgroundColor={setBackgroundColor}
               setPrimaryColor={setPrimaryColor}
               setSecondaryColor={setSecondaryColor}
               setTextHighlightColor={setTextHighlightColor}

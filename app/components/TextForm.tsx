@@ -9,10 +9,10 @@ const TextForm = ({
 }) => {
   const handleSave = () => {
     const logoInput = document.getElementById("Logo");
-    setLogo(logoInput.files[0]); //Ts error
-    setHeroTitle(document.getElementById("Hero Title").value);
-    setHeroSubtitle(document.getElementById("Hero Subtitle").value);
-    setHeroDescription(document.getElementById("Hero Description").value);
+    setLogo(logoInput?.files[0]); //Ts error
+    setHeroTitle(document.getElementById("Hero Title")?.value);
+    setHeroSubtitle(document.getElementById("Hero Subtitle")?.value);
+    setHeroDescription(document.getElementById("Hero Description")?.value);
   };
 
   return (
