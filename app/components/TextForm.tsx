@@ -17,9 +17,15 @@ const TextForm = () => {
           </label>
           <input className={fileInputStyle} type="file" />
         </div>
-        <TextInput inputObjective="Hero Title" />
-        <TextInput inputObjective="Hero Subtitle" />
-        <TextInput inputObjective="Hero Description" />
+        <TextInput inputObjective="Hero Title" placeholder="Your hero title" />
+        <TextInput
+          inputObjective="Hero Subtitle"
+          placeholder="Your hero subtitle"
+        />
+        <TextInput
+          inputObjective="Hero Description"
+          placeholder="Your hero description"
+        />
       </div>
     </motion.div>
   );

@@ -1,6 +1,6 @@
 import { TiArrowForward } from "react-icons/ti";
 
-const TextInput = ({ inputObjective }) => {
+const TextInput = ({ inputObjective, placeholder }) => {
   return (
     <div className="flex flex-col w-[300px] sm:w-[400px] gap-4">
       <div className="flex justify-start items-center gap-2">
@@ -13,7 +13,7 @@ const TextInput = ({ inputObjective }) => {
       </div>
       <input
         type="text"
-        placeholder={inputObjective}
+        placeholder={placeholder}
         className="px-2 py-1 rounded-lg text-lg text-black focus:ring-4 focus:ring-activeText focus:outline-none focus:animate-pulse"
       />
     </div>
