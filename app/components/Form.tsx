@@ -5,11 +5,15 @@ import TextForm from "./TextForm";
 import ColorForm from "./ColorForm";
 
 const Form = () => {
+  //Display managers
   const [layoutForm, setLayoutForm] = useState(true);
   const [textForm, setTextForm] = useState(false);
   const [colorForm, setColorForm] = useState(false);
-  const [selectedLayout, setSelectedLayout] = useState("None");
 
+  //Form submit managers
+  const [selectedLayout, setSelectedLayout] = useState("none");
+
+  // --------------Display managers--------------
   const handleLayoutForm = () => {
     setLayoutForm(true);
     setTextForm(false);
@@ -25,15 +29,16 @@ const Form = () => {
     setTextForm(false);
     setColorForm(true);
   };
+  // --------------Display managers--------------
 
   return (
     <form
       id="create"
       className="py-6 sm:py-16 xl:px-0 sm:px-16 px-6 text-white"
     >
-      <h1 className="text-3xl">Web Form</h1>
+      <h1 className="text-4xl">Web Form</h1>
       <div className="w-full mt-10 flex flex-col md:flex-row gap-16">
-        <ul className="md:w-42 flex flex-col ">
+        <ul className="md:w-42 flex flex-col mt-16">
           <li
             onClick={handleLayoutForm}
             className={`${

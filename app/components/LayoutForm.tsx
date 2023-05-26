@@ -30,7 +30,7 @@ const LayoutForm = ({ selectedLayout, setSelectedLayout }) => {
       transition={{ delay: 0.1 }}
       className="w-full px-12"
     >
-      <h2 className="text-2xl mb-8 md:mb-16">Select your layout</h2>
+      <h2 className="text-3xl mb-8 md:mb-16">Select your layout</h2>
       <div className="flex flex-wrap gap-4 justify-center items-center">
         {layouts.map((layout) => (
           <Image
