@@ -41,6 +41,17 @@ const Form = () => {
 
   const handleGenerate = () => {
     //Here I set the data to the file manager
+    // options = {
+    //   color: {
+    //     primary: primaryColor,
+    //     secondary: secondaryColor,
+    //   }
+    //   text: {
+    //     //como quieras
+    //   }
+    //   layout : [{name: , path: }] //En orden de renderizado
+    // }
+    //createStructure(options);
     console.log(selectedLayout);
     console.log(logo);
     console.log(heroTitle);
