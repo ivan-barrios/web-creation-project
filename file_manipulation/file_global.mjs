@@ -1,55 +1,62 @@
-import { mkdir, readFile, cp, copyFile, writeFile } from 'fs/promises'
+import { mkdir, readFile, cp, copyFile, writeFile } from "fs/promises";
 
-async function colorStructure(tailDir, palette){
-    //Color structure will edit tailwind.config.js to include the chosen palette included in the submitted form
+async function colorStructure(tailDir, palette) {
+  //Color structure will edit tailwind.config.js to include the chosen palette included in the submitted form
 
+  //Read the tailwind config file
+  let file = await readFile(tailDir, "utf8");
 
-    //Read the tailwind config file
-    let file = await readFile(tailDir, 'utf8');
-    
-    //Replace color variables with the chosen palette
-    for(const [k, v] of Object.entries(palette)){
-        file = file.replace(`{${k}}`, `"${v}"`);
-    }
-    
-    //Write the new file
-    let newFile = await writeFile(tailDir, file);
-}
-async function layoutStructure(dst, components){
-    // Layout structure has to 1) Put components into components folder inside the dst folder and 2)Edit
-    // page.tsx to include the new components
+  //Replace color variables with the chosen palette
+  for (const [k, v] of Object.entries(palette)) {
+    file = file.replace(`{${k}}`, `"${v}"`);
+  }
 
-    for(const component of components){
-        //1) Put components into components folder inside the dst folder
-        await copyFile(component.path, `${dst}/components/${component.name}`);
-        //2)Edit page.tsx to include the new components
-        let pageFile = await readFile(`${dst}/app/page.tsx`, 'utf8');
-        pageFile = file.replace(`Componente${i}`, `<${component.name} />`);
-        await writeFile(`${dst}/pages/page.tsx`, pageFile);
-    };
-    }
-
-async function textStructure(dst, text){
-    //Preguntar TIBU: En que componentes estaria el texto, solo en HERO?, para incluir el path correcto
+  //Write the new file
+  let newFile = await writeFile(tailDir, file);
 }
 
-async function createStructure(options){
-    const srcDir = ''; // path to the basic strucutre
-    const dstDir = ''; // path to the downloadable folder
-    const filePaths = ["path1", "path2", "path3",];  //Replaced by options.layout in the future
+async function layoutStructure(dst, components) {
+  // Layout structure has to 1) Put components into components folder inside the dst folder and 2)Edit
+  // page.tsx to include the new components
+  let i = 1;
+  let pageFile = await readFile(`${dst}/app/page.tsx`, "utf8");
 
-    //Create downloadable directory with basic structure
-    const createDir = await mkdir('carpeta', {recursive: true});
-    const copyDir = await cp(srcDir, dstDir, { recursive: true });
-
-    //Copy chosen files to the downloadable directory
-    for (const filePath of filePaths) {
-        await copyFile(filePath, `${dstDir}/components/${structOption}`);
-    }
-
-    colorStructure(`dstDir/tailwind.config.js`, options.color);
-    textStructure(dstDir,options.text);
-    layoutStructure(options.layout);
+  for (const component of components) {
+    // 1) Put components into components folder inside the dst folder
+    await copyFile(
+      component.path,
+      `${dst}/app/components/${component.name}.tsx`
+    );
+    // 2)Edit page.tsx to include the new components
+    pageFile = pageFile.replace(`{Componente${i}}`, `<${component.name} />`);
+    i++;
+  }
+  //Write changes into new file
+  await writeFile(`${dst}/app/page.tsx`, pageFile);
 }
 
-colorStructure('carpeta/tailwind.config.js', {primary: 'blue', secondary: 'red', terciary: 'green'});
+async function textStructure(dst, text) {
+  //Preguntar TIBU: En que componentes estaria el texto, solo en HERO?, para incluir el path correcto
+}
+
+async function createStructure(options) {
+  const dirName = "reusable_structure";
+  const srcDir = `../${dirName}`; //Path to basic structure and reusable components
+  const dstDir = "./"; // path to the downloadable folder
+
+  const copyDir = await cp(srcDir, dstDir, { recursive: true });
+
+  //Working as intended
+  colorStructure(`./${dirName}/tailwind.config.js`, options.color);
+
+  //Working as intended
+  layoutStructure("./reusable_structure", options.layout);
+
+  //textStructure(dstDir,options.text);
+}
+
+createStructure({
+  color: { primary: "blue", secondary: "red", terciary: "green" },
+  text: "Hola",
+  layout: [{ name: "Hello", path: "../reusable_components/Hello.tsx" }],
+});
