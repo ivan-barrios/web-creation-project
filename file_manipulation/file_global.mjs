@@ -39,7 +39,7 @@ async function textStructure(dst, text) {
   //Preguntar TIBU: En que componentes estaria el texto, solo en HERO?, para incluir el path correcto
 }
 
-async function createStructure(options) {
+export async function createStructure(options) {
   const dirName = "reusable_structure";
   const srcDir = `../${dirName}`; //Path to basic structure and reusable components
   const dstDir = "./"; // path to the downloadable folder

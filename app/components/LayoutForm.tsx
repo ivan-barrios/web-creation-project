@@ -7,16 +7,19 @@ const layouts = [
   {
     id: 1,
     imgSrc: layout1,
+    name: "NavbarA",
     path: "/layout1",
   },
   {
     id: 2,
     imgSrc: layout1,
+    name: "HeroA",
     path: "/layout2",
   },
   {
     id: 3,
     imgSrc: layout1,
+    name: "FooterA",
     path: "/layout3",
   },
 ];
@@ -42,7 +45,9 @@ const LayoutForm = ({ selectedLayout, setSelectedLayout }) => {
             alt="Layout"
             width={300}
             height={300}
-            onClick={() => setSelectedLayout(layout.path)}
+            onClick={() =>
+              setSelectedLayout({ name: layout.name, path: layout.path })
+            }
             className={`cursor-pointer rounded-lg ${
               selectedLayout == layout.path ? "ring-4 ring-activeText" : ""
             }`}

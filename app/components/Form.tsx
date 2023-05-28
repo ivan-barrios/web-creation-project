@@ -4,6 +4,8 @@ import LayoutForm from "./LayoutForm";
 import TextForm from "./TextForm";
 import ColorForm from "./ColorForm";
 
+import { createStructure } from "../../file_manipulation/file_global.mjs";
+
 const Form = () => {
   //Display managers
   const [layoutForm, setLayoutForm] = useState(true);
@@ -11,7 +13,7 @@ const Form = () => {
   const [colorForm, setColorForm] = useState(false);
 
   //Form submit managers
-  const [selectedLayout, setSelectedLayout] = useState("none");
+  const [selectedLayout, setSelectedLayout] = useState({ name: "", path: "" });
   const [selectedText, setSelectedText] = useState({
     logo: "",
     heroTitle: "",
@@ -45,16 +47,23 @@ const Form = () => {
 
   const handleGenerate = () => {
     //Here I set the data to the file manager
-    // options = {
-    //   color: {
-    //     primary: primaryColor,
-    //     secondary: secondaryColor,
-    //   }
-    //   text: {
-    //     //como quieras
-    //   }
-    //   layout : [{name: , path: }] //En orden de renderizado
-    // }
+    const options = {
+      color: {
+        backgroundColor: selectedColors.backgroundColor,
+        primary: selectedColors.primaryColor,
+        secondary: selectedColors.secondaryColor,
+        textHighlightColor: selectedColors.textHighlightColor,
+      },
+      text: {
+        logo: selectedText.logo,
+        heroTitle: selectedText.heroTitle,
+        heroSubtitle: selectedText.heroSubtitle,
+        heroDescription: selectedText.heroDescription,
+      },
+      layout: [{ name: "", path: "" }], //En orden de renderizado
+    };
+    // Cuando llamo a la funcion me tira error en file_global.mjs por
+    // algun import
     //createStructure(options);
   };
 
