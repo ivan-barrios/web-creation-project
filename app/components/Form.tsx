@@ -4,7 +4,7 @@ import LayoutForm from "./LayoutForm";
 import TextForm from "./TextForm";
 import ColorForm from "./ColorForm";
 
-import { createStructure } from "../../file_manipulation/file_global.mjs";
+import { createStructure as create } from "@/file_manipulation/file_global.mjs";
 
 const Form = () => {
   //Display managers
@@ -64,7 +64,7 @@ const Form = () => {
     };
     // Cuando llamo a la funcion me tira error en file_global.mjs por
     // algun import
-    //createStructure(options);
+    create(options);
   };
 
   return (
