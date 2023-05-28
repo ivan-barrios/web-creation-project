@@ -1,19 +1,15 @@
 import { motion } from "framer-motion";
 import TextInput from "./TextInput";
 
-const ColorForm = ({
-  setBackgroundColor,
-  setPrimaryColor,
-  setSecondaryColor,
-  setTextHighlightColor,
-}) => {
+const ColorForm = ({ setSelectedColors }) => {
   const handleSave = () => {
-    setBackgroundColor(document.getElementById("Background Color")?.value);
-    setPrimaryColor(document.getElementById("Primary color")?.value);
-    setSecondaryColor(document.getElementById("Secondary color")?.value);
-    setTextHighlightColor(
-      document.getElementById("Text highlight color")?.value
-    );
+    setSelectedColors({
+      backgroundColor: document.getElementById("Background Color")?.value,
+      primaryColor: document.getElementById("Primary color")?.value,
+      secondaryColor: document.getElementById("Secondary color")?.value,
+      textHighlightColor: document.getElementById("Text highlight color")
+        ?.value,
+    });
   };
 
   return (

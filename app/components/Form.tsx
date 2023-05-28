@@ -12,14 +12,18 @@ const Form = () => {
 
   //Form submit managers
   const [selectedLayout, setSelectedLayout] = useState("none");
-  const [logo, setLogo] = useState();
-  const [heroTitle, setHeroTitle] = useState("none");
-  const [heroSubtitle, setHeroSubtitle] = useState("none");
-  const [heroDescription, setHeroDescription] = useState("none");
-  const [backgroundColor, setBackgroundColor] = useState("none");
-  const [primaryColor, setPrimaryColor] = useState("none");
-  const [secondaryColor, setSecondaryColor] = useState("none");
-  const [textHighlightColor, setTextHighlightColor] = useState("none");
+  const [selectedText, setSelectedText] = useState({
+    logo: "",
+    heroTitle: "",
+    heroSubtitle: "",
+    heroDescription: "",
+  });
+  const [selectedColors, setSelectedColors] = useState({
+    backgroundColor: "",
+    primaryColor: "",
+    secondaryColor: "",
+    textHighlightColor: "",
+  });
 
   // --------------Display managers--------------
   const handleLayoutForm = () => {
@@ -52,15 +56,6 @@ const Form = () => {
     //   layout : [{name: , path: }] //En orden de renderizado
     // }
     //createStructure(options);
-    console.log(selectedLayout);
-    console.log(logo);
-    console.log(heroTitle);
-    console.log(heroSubtitle);
-    console.log(heroDescription);
-    console.log(backgroundColor);
-    console.log(primaryColor);
-    console.log(secondaryColor);
-    console.log(textHighlightColor);
   };
 
   return (
@@ -109,22 +104,8 @@ const Form = () => {
               setSelectedLayout={setSelectedLayout}
             />
           )}
-          {textForm && (
-            <TextForm
-              setLogo={setLogo}
-              setHeroTitle={setHeroTitle}
-              setHeroSubtitle={setHeroSubtitle}
-              setHeroDescription={setHeroDescription}
-            />
-          )}
-          {colorForm && (
-            <ColorForm
-              setBackgroundColor={setBackgroundColor}
-              setPrimaryColor={setPrimaryColor}
-              setSecondaryColor={setSecondaryColor}
-              setTextHighlightColor={setTextHighlightColor}
-            />
-          )}
+          {textForm && <TextForm setSelectedText={setSelectedText} />}
+          {colorForm && <ColorForm setSelectedColors={setSelectedColors} />}
         </div>
       </div>
       <div className="w-full flex justify-center mt-16 sm:mt-24">

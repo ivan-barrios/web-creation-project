@@ -1,18 +1,14 @@
 import { motion } from "framer-motion";
 import TextInput from "./TextInput";
 
-const TextForm = ({
-  setLogo,
-  setHeroTitle,
-  setHeroSubtitle,
-  setHeroDescription,
-}) => {
+const TextForm = ({ setSelectedText }) => {
   const handleSave = () => {
-    const logoInput = document.getElementById("Logo");
-    setLogo(logoInput?.files[0]); //Ts error
-    setHeroTitle(document.getElementById("Hero Title")?.value);
-    setHeroSubtitle(document.getElementById("Hero Subtitle")?.value);
-    setHeroDescription(document.getElementById("Hero Description")?.value);
+    setSelectedText({
+      logo: document.getElementById("Logo")?.files[0],
+      heroTitle: document.getElementById("Hero Title")?.value,
+      heroSubtitle: document.getElementById("Hero Subtitle")?.value,
+      heroDescription: document.getElementById("Hero Description")?.value,
+    });
   };
 
   return (
